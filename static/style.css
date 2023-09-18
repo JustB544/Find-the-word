@@ -1,101 +1,33 @@
-.horizontal_div {
+html {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+}
+
+nav .green_but:hover,
+nav .blue_but:hover {
+    background-color: lightgrey;
+}
+
+nav {
+    background-color: lightgrey;
+    width: 100%;
+    margin: 0;
     display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(179, 179, 179);
 }
 
-.tag {
-    background-color: blue;
-    color: white;
-    padding: 2px;
-    border-radius: 2px;
-}
-
-.tag:hover {
-    background-color: blue;
-    color: white;
-    padding: 1px;
-    border-radius: 2px;
-}
-
-* {
-    margin: 4px;
-}
-
-img {
-    max-height: 300px;
-    border-radius: 10px;
-}
-
-a {
-    color: blue;
+#nav_title {
+    margin-left: 10px;
+    color: teal;
     text-decoration: none;
 }
 
-a:hover {
-    text-decoration: underline;
-}
-
-button {
-    border-radius: 4px;
-    padding: 8px 12px;
-    border-width: 0px;
-}
-
-button:hover {
-    padding: 7px 11px;
-    border-width: 1px;
-}
-
-.green_but {
-    background-color: green;
-    color: white;
-}
-
-.green_but:hover {
-    background-color: white;
-    color: green;
-    border-color: green;
-}
-
-.red_but {
-    background-color: red;
-    color: white;
-}
-
-.red_but:hover {
-    background-color: white;
-    color: red;
-    border-color: red;
-}
-
-.blue_but {
-    background-color: blue;
-    color: white;
-}
-
-.blue_but:hover {
-    background-color: white;
-    color: blue;
-    border-color: blue;
-}
-
-.gray_but {
-    background-color: gray;
-    color: white;
-}
-
-.gray_but:hover {
-    background-color: white;
-    color: gray;
-    border-color: gray;
-}
-
-.lightblue_but {
-    background-color: rgb(83, 163, 190);
-    color: white;
-}
-
-.lightblue_but:hover {
-    background-color: white;
-    color: rgb(83, 163, 190);
-    border-color: rgb(83, 163, 190);
+#nav_title:hover {
+    color: rgb(0, 97, 97);
 }

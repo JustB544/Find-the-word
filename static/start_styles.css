@@ -8,8 +8,17 @@
     flex-direction: column;
 }
 
+.center {
+    display: flex;
+    justify-content: center;
+}
+
 * {
     margin: 4px;
+}
+
+.hidden {
+    display: none;
 }
 
 img {

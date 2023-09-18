@@ -5,13 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% block title %} TITLE GOES HERE {% endblock %}</title>
-    <link rel="stylesheet" href="/static/style.css?u={{ last_updated }}">
-    <link rel="stylesheet" href="/static/start_styles.css?u={{ last_updated }}">
+    <title>{% block title %} Find the Word {% endblock %}</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/start_styles.css">
 </head>
 
 <body>
-    {% block body%} BODY {% endblock %}
+    {% block no_nav %}
+    <nav class="horizontal" style="align-items: center;">
+        <div>
+          <a id="nav_title" href="/"><span>Find the Word</span></a>
+        </div>
+        <div class="horizontal">
+            {% if g.user == None %}
+            <form action="/signup">
+                <button class="green_but">Sign up</button>
+            </form>
+            <form action="/login">
+                <button class="green_but">Login</button>
+            </form>
+            {% else %}
+            <form action="/logout">
+                <button class="blue_but">Logout</button>
+            </form>
+            {% endif %}
+        </div>
+      </nav>
+    {% endblock %}
+    {% for msg in get_flashed_messages() %}
+        <span>{{msg}}</span>
+    {% endfor %}
+    {% block body %} BODY {% endblock %}
+    <script src="https://unpkg.com/axios/dist/axios.js"></script>
+    <script src="static/api_secrets.js"></script>
+    <script src="static/api.js"></script>
 </body>
 
 </html>

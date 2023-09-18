@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div>
+    <div class="vertical center">
+        <div style="width: fit-content;">
+            <h2 style="margin-top: 50px;">Please Login</h2>
+
+            <form method="POST" class="vertical">
+                {{ form.hidden_tag() }}
+
+                {% for field in form if field.widget.input_type != 'hidden' %}
+                {% for error in field.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+                {{ field(placeholder=field.label.text) }}
+                {% endfor %}
+
+                <button class="blue_but">Log in</button>
+            </form>
+        </div>
+        <hr>
+        <div class="vertical">
+            <h2>Don't have an account?</h2>
+            <div class="horizontal">
+                <form action="/signup">
+                    <button class="green_but">Sign up</button>
+                </form>
+                <form method="POST">
+                    <input class="hidden" name="guest" value="true"/>
+                    <button class="blue_but">Continue as guest</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

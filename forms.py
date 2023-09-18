@@ -1,15 +1,15 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SelectField, IntegerField, BooleanField
-from wtforms.validators import InputRequired, Optional, URL, NumberRange
+from wtforms import StringField, SelectField, IntegerField, BooleanField, PasswordField
+from wtforms.validators import InputRequired, Optional, URL, NumberRange, Length, DataRequired
 
-# class AddPetsForm(FlaskForm):
-#     """Form for adding pets"""
+class AddUserForm(FlaskForm):
+    """Add user form."""
 
-#     name = StringField("Name of pet", validators=[InputRequired()])
-#     species = SelectField("Pet Species", validators=[InputRequired()],
-#                            choices=[('Dog', 'Dog'), ('Porcupine', 'Porcupine'), ('Cat', 'Cat')])
-#     photo_url = StringField("Photo of pet", validators=[Optional(), URL()])
-#     age = IntegerField("Age of pet", validators=[Optional(), NumberRange(min=0, max=30, message="Age is invalid")])
-#     notes = StringField("Any notes regarding the pet", validators=[Optional()])
-#     available = SelectField("Pet Species", validators=[Optional()],
-#                            choices=[('True', 'Available'), ('False', 'Not available')])
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[Length(min=6)])
+
+class LoginForm(FlaskForm):
+    """Login form."""
+
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[Length(min=6)])   
