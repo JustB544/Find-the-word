@@ -269,10 +269,10 @@ def create_data(game_dest):
     if (game_dest == "examples"):
         output = output.replace(answer, "_____")
         # makes it harder to deduce simply based off grammar
-        output = output.replace(" a _____", " a(n) _____")
-        output = output.replace(" an _____", " a(n) _____")
-        output = output.capitalize().replace("A _____", "a(n) _____")
-        output = output.capitalize().replace("An _____", "a(n) _____")
+        output = output.replace(" a _____", " a(n) _____", count=1)
+        output = output.replace(" an _____", " a(n) _____", count=1)
+        output = output.capitalize().replace("A _____", "a(n) _____", count=1)
+        output = output.capitalize().replace("An _____", "a(n) _____", count=1)
         return {"output": output, "words": words, "answer": answer}
     elif (game_dest == "definitions"):
         return {"output": output["definition"], "words": words, "answer": answer}
