@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+
+{% block body%}
+
+<div class="vetical center max">
+    <div class="game center_x">
+        <div class="margin-50 white-box">
+            {% if statistics.get('average', None) == None and statistics.get('game', None) == None %}
+                <h2>No games yet!</h2>
+            {% else %}
+                {% if games %}
+                    <h2 style="margin-bottom: 50px;">Your average score is {{statistics['average']}}</h2>
+                {% else %}
+                    <h2 style="margin-bottom: 50px;">Your score was {{statistics['game'].score}}</h2>
+                {% endif %}
+                    <div class="vertical no-margin" style="overflow-y: auto; max-height: 80%; background-color: whitesmoke; border-radius: 10px; padding: 5px">
+                        {% if games %}
+                            {% for game in statistics["games"] %}
+                                <div class="horizontal max center" style="padding: 3px 0px 3px 0px;">
+                                    <h3>{{game.game_type.capitalize()}} match: {{game.score}}/10</h3>
+                                    <form action="/statistics/{{game.id}}">
+                                        <button class="lightblue_but">View rounds</button>
+                                    </form>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            {% for round in statistics["rounds"] %}
+                                <div class="vertical max center" style="margin: 3px 0px 3px 0px; background-color: white; border-radius: 3px;">
+                                    {% autoescape false %}
+                                    <h3>{{round.data.replace('\n', '')}}</h3>
+                                    <h3>{{ round.words.replace(round.guess, '<span class="no-margin" style="color: red">' + round.guess + "</span>").replace(round.answer, '<span class="no-margin" style="color: green">' + round.answer + "</span>") }}</h3>
+                                    {% endautoescape %}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

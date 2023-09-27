@@ -1,11 +1,15 @@
 html {
     height: 100%;
+    width: 100%;
     margin: 0;
 }
 
 body {
     height: 100%;
+    width: 100%;
     margin: 0;
+    display: inline-flex;
+    flex-direction: column;
 }
 
 nav .green_but:hover,
@@ -16,6 +20,7 @@ nav .blue_but:hover {
 nav {
     background-color: lightgrey;
     width: 100%;
+    height: 6%;
     margin: 0;
     display: flex;
     justify-content: space-between;
@@ -30,4 +35,90 @@ nav {
 
 #nav_title:hover {
     color: rgb(0, 97, 97);
+}
+
+
+.margin-vertical-50 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.margin-50 {
+    margin: 50px;
+}
+
+.game {
+    background-color: lightgray;
+    max-height: 80%;
+    max-width: 80%;
+    min-width: 40%;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 10px;
+}
+
+h1, h2, h3 {
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 42px;
+}
+
+h2 {
+    font-size: 30px
+}
+
+.big-button {
+    border-radius: 6px;
+    padding: 16px 24px;
+    border-width: 0px;
+    margin: 4px;
+    font-size: larger;
+}
+
+.big-input {
+    border-radius: 6px;
+    padding: 16px 10px;
+    border-width: 0px;
+    margin: 4px;
+    font-size: larger;
+}
+
+.big-button:hover {
+    padding: 15px 23px;
+    border-width: thin;
+}
+
+.white-box {
+    background-color: white;
+    border-radius: 10px;
+    color:rgb(83, 163, 190); 
+    text-align: center; 
+    padding: 50px;
+    min-width: 25rem;
+}
+
+.blue_but.no-flip:hover {
+    background-color: rgb(0, 0, 186);
+    color: white;
+    border-radius: 4px;
+    padding: 8px 12px;
+    border-width: 0px;
+}
+
+.yellow_but.no-flip:hover {
+    background-color: rgb(195, 195, 78);
+    color: white;
+    border-radius: 4px;
+    padding: 8px 12px;
+    border-width: 0px;
+}
+
+.green_but.no-flip:hover {
+    background-color: rgb(0, 93, 0);
+    color: white;
+    border-radius: 4px;
+    padding: 8px 12px;
+    border-width: 0px;
 }

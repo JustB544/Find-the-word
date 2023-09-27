@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block body%}
+
+<div class="vertical center max">
+    <div class="center_x game">
+        <div class="margin-50 white-box" style="color:rgb(83, 163, 190); text-align: center; padding: 50px;">
+            <div>
+                <h1>{{data["msg"]}}</h1>
+                {% if "answer" in data %}
+                <h3>The correct answer was<b>{{data["answer"]}}</b></h3>     
+                {% endif %}      
+            </div>
+            <form action="/game{{'/finish' if end else ''}}" style="margin-top: 50px;">
+                <button class="lightblue_but big-button">Continue</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

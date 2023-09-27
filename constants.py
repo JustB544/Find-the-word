@@ -16,5 +16,6 @@ TZ = timezone(
     )
 )
 TZ_NOW = lambda: datetime.now(TZ).strftime("%b %d %Y")
-API_LIMIT = 2500
-USER_API_LIMIT = 1000
+
+# Must change create_data() in app, models, and root.html as well
+GAME_TYPES = ["Sentence", "Definition", "Synonym", "Antonym"]

@@ -9,7 +9,9 @@ from json import loads
 def extract(file):
     """Returns contents of file"""
     f = open(file, "r")
-    return f.read()
+    output = f.read()
+    f.close()
+    return output
 
 
 def transform(string: str, split: str):
@@ -63,6 +65,6 @@ def remove_words(words, bad_words):
         _words = _words.replace(f",{word},", ",")
     with open("new_words.txt", "w") as f:
         f.write(_words)
-remove_words("words.txt", "bad_words.txt")
+# remove_words("words.txt", "bad_words.txt")
             
 

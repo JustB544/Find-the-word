@@ -2,7 +2,45 @@
 
 
 {% block body%}
-
+<div class="vertical max">
+    <div class="center max">
+        <div class="game center_x">
+            <div class="margin-50 white-box">
+                <div class="center_x vertical center-text">
+                    <h1 style="font-size: 60px;">Welcome</h1>
+                </div>
+                {% if game %}
+                <div class="horizontal center_x" style="margin-top: 50px;">
+                    <form action="/game">
+                        <button class="lightblue_but big-button">Continue game</button>
+                    </form>
+                    <form action="/game/end">
+                        <button class="lightblue_but big-button">End current game</button>
+                    </form>
+                </div>
+                {% else %}
+                <div>
+                    <h2 class="margin-vertical-50">Select a game type to start a new game!</h2>
+                    <div class="horizontal center_x">
+                        <form action="/game/example/new">
+                            <button class="lightblue_but big-button">Example match</button>
+                        </form>
+                        <form action="/game/definition/new">
+                            <button class="lightblue_but big-button">Definition match</button>
+                        </form>
+                        <form action="/game/synonym/new">
+                            <button class="lightblue_but big-button">Synonym match</button>
+                        </form>
+                        <form action="/game/antonym/new">
+                            <button class="lightblue_but big-button">Antonym match</button>
+                        </form>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
 
 
 {% endblock %}

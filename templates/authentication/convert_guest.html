@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="vertical center max">
+    <div class="center_x game">
+        <div class="margin-50 white-box">
+            <div style="margin-bottom: 50px;">
+                <h1 style="text-align: center;">Set a username and password</h1>           
+            </div>
+            <div class="center_x">
+                <form method="POST" class="vertical max">
+                    {{ form.hidden_tag() }}
+        
+                    {% for field in form if field.widget.input_type != 'hidden' %}
+                    {% for error in field.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                    {{ field(placeholder=field.label.text, class="big-input", style="color:rgb(57, 57, 57);") }}
+                    {% endfor %}
+                    <div class="center_x max">
+                        <form action="POST">
+                            <button class="lightblue_but big-button" style="margin-top: 10px; width: 50%;">Convert account</button>
+                        </form>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

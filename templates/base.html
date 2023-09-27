@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="overflow-y: hidden;">
 
 <head>
     <meta charset="UTF-8">
@@ -12,33 +12,38 @@
 
 <body>
     {% block no_nav %}
-    <nav class="horizontal" style="align-items: center;">
+    <nav class="horizontal center_y">
         <div>
-          <a id="nav_title" href="/"><span>Find the Word</span></a>
+            <a id="nav_title" href="/" style="font-size: larger;"><span>Find the Word</span></a>
         </div>
         <div class="horizontal">
             {% if g.user == None %}
             <form action="/signup">
-                <button class="green_but">Sign up</button>
+                <button class="green_but no-flip">Sign up</button>
             </form>
             <form action="/login">
-                <button class="green_but">Login</button>
+                <button class="green_but no-flip">Login</button>
             </form>
             {% else %}
+            <form action="/statistics">
+                <button class="yellow_but no-flip">Statistics</button>
+            </form>
+            {% if session.get("is_guest", False) %}
+            <form action="/convert-guest">
+                <button class="blue_but no-flip">Convert account</button>
+            </form>
+            {% endif %}
             <form action="/logout">
-                <button class="blue_but">Logout</button>
+                <button class="blue_but no-flip">Logout</button>
             </form>
             {% endif %}
         </div>
-      </nav>
+    </nav>
     {% endblock %}
     {% for msg in get_flashed_messages() %}
         <span>{{msg}}</span>
     {% endfor %}
     {% block body %} BODY {% endblock %}
-    <script src="https://unpkg.com/axios/dist/axios.js"></script>
-    <script src="static/api_secrets.js"></script>
-    <script src="static/api.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block body%}
+
+<div class="vertical center max">
+    <div class="center_x game">
+        <div class="margin-50 white-box" style="color:rgb(83, 163, 190); text-align: center; padding: 50px;">
+            <div>
+                <h1>{{msg}}</h1>
+                <h2>Your score was: {{score}}</h2>               
+            </div>
+            <div class="horizontal center_x" style="margin-top: 50px;">
+                <form action="/">
+                    <button class="lightblue_but big-button">Return home</button>
+                </form>
+                <form action="/game/{{gt}}/new">
+                    <button class="lightblue_but big-button">Play again</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

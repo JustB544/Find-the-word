@@ -35,13 +35,19 @@ class User(db.Model):
         nullable=False,
     )
     @classmethod
-    def signup(cls, username=None, password=None, guest=False):
+    def signup(cls, username=None, password=None, guest=False, user=None):
         """Sign up user.
 
         Hashes password and adds user to system.
         """
 
-        if (guest):
+        if (user != None):
+            hashed_pwd = bcrypt.generate_password_hash(password).decode('UTF-8')
+            user.username = username
+            user.password = hashed_pwd
+            db.session.commit()
+            return user
+        elif (guest):
             last_id = User.query.with_entities(User.id.label("id")).order_by(User.id.desc()).limit(1).one_or_none()
             if (last_id == None):
                 last_id = 0
@@ -91,9 +97,35 @@ class Words(db.Model):
         primary_key=True
     )
 
-    word = db.Column(db.Text)
+    word = db.Column(
+            db.Text,
+            nullable=False
+            )
 
-    length = db.Column(db.Integer)
+    length = db.Column(
+            db.Integer,
+            nullable=False
+            )
+    
+    example = db.Column(
+        db.Boolean,
+        default=True
+    )
+
+    definition = db.Column(
+        db.Boolean,
+        default=True
+    )
+
+    synonym = db.Column(
+        db.Boolean,
+        default=True
+    )
+
+    antonym = db.Column(
+        db.Boolean,
+        default=True
+    )
 
 class ApiTracker(db.Model):
     """Keeps track of daily API calls by users"""
@@ -105,18 +137,128 @@ class ApiTracker(db.Model):
         primary_key=True
     )
 
-    user = db.Column(
+    user_id = db.Column(
         db.Integer,
-        db.ForeignKey("users.id", ondelete="CASCADE")
+        db.ForeignKey("users.id", ondelete="CASCADE"),
+        nullable=False
     )
 
     date = db.Column(
         db.Text,
-        default=TZ_NOW()
+        default=TZ_NOW(),
+        nullable=False
     )
 
     api_calls = db.Column(
         db.Integer,
+        default=0,
+        nullable=False
+    )
+
+# class GameType(db.Model):
+#     """Holds all game types"""
+
+#     __tablename__ = "game_types"
+
+#     id = db.Column(
+#         db.Integer,
+#         primary_key=True
+#     )
+
+#     name = db.Column(
+#         db.Text,
+#         unique=True,
+#         nullable=False
+#     )
+
+
+class Game(db.Model):
+    """Game that each round associates with"""
+
+    __tablename__ = "games"
+
+    id = db.Column(
+        db.Integer,
+        primary_key=True
+    )
+
+    game_type = db.Column(
+        db.Text,
+        nullable=False
+    )
+
+    user_id = db.Column(
+        db.Integer,
+        db.ForeignKey("users.id", ondelete="CASCADE"),
+        nullable=False
+    )
+
+    score = db.Column(
+        db.Integer,
         default=0
     )
+
+    rounds = db.Column(
+        db.Integer,
+        default=10
+    )
+
+    completed = db.Column(
+        db.Boolean,
+        default=False
+    )
+
+    user = db.relationship("User")
+
+
+class Round(db.Model):
+    """Individual round in a game"""
+
+    __tablename__ = "rounds"
+
+    id = db.Column(
+        db.Integer,
+        primary_key=True
+    )
+
+    game_id = db.Column(
+        db.Integer,
+        db.ForeignKey("games.id", ondelete="CASCADE"),
+        nullable=False
+    )
+
+    score = db.Column(
+        db.Boolean
+    )
+
+    # hints = db.Column(
+    #     db.Integer,
+    #     nullable=False,
+    #     default=0
+    # )
+
+    # In the form "word1, word2, word3, word4"
+    words = db.Column(
+        db.Text
+    )
+
+    answer = db.Column(
+        db.Text
+    )
+
+    data = db.Column(
+        db.Text
+    )
+
+    guess = db.Column(
+        db.Text
+    )
+
+    completed = db.Column(
+        db.Boolean,
+        default=False,
+        nullable=False
+    )
+
+    game = db.relationship("Game")
 

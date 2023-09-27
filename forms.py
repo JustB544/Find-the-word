@@ -12,4 +12,9 @@ class LoginForm(FlaskForm):
     """Login form."""
 
     username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[Length(min=6)])   
+    password = PasswordField('Password', validators=[Length(min=6)])
+
+class GameForm(FlaskForm):
+    """Form for passing game data"""
+
+    guess = StringField('', validators=[Optional()])
