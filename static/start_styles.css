@@ -124,7 +124,7 @@ button:hover {
 
 .gray_but {
     background-color: gray;
-    color: inherit;
+    color: white;
 }
 
 .gray_but:hover {

@@ -122,3 +122,11 @@ h2 {
     padding: 8px 12px;
     border-width: 0px;
 }
+
+.gray_but.no-flip:hover {
+    background-color: rgb(80, 80, 80);
+    color: white;
+    border-radius: 4px;
+    padding: 8px 12px;
+    border-width: 0px;
+}
