@@ -20,7 +20,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = (
     os.environ.get('DATABASE_URL', 'postgresql:///Capstone_1'))
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = False
-app.config['FLASK_DEBUG'] = os.environ.get('FLASK_DEBUG', True)
+# app.config['FLASK_DEBUG'] = os.environ.get('FLASK_DEBUG', True)
+app.debug = os.environ.get('FLASK_DEBUG', False)
 
 with app.app_context():
     connect_db(app)
@@ -269,10 +270,10 @@ def create_data(game_dest):
     if (game_dest == "examples"):
         output = output.replace(answer, "_____")
         # makes it harder to deduce simply based off grammar
-        output = output.replace(" a _____", " a(n) _____", count=1)
-        output = output.replace(" an _____", " a(n) _____", count=1)
-        output = output.capitalize().replace("A _____", "a(n) _____", count=1)
-        output = output.capitalize().replace("An _____", "a(n) _____", count=1)
+        output = output.replace(" a _____", " a(n) _____", 1)
+        output = output.replace(" an _____", " a(n) _____", 1)
+        output = output.capitalize().replace("A _____", "a(n) _____", 1)
+        output = output.capitalize().replace("An _____", "a(n) _____", 1)
         return {"output": output, "words": words, "answer": answer}
     elif (game_dest == "definitions"):
         return {"output": output["definition"], "words": words, "answer": answer}
