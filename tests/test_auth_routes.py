@@ -21,7 +21,7 @@ app.config['WTF_CSRF_ENABLED'] = False
 app.config['TESTING'] = True
 
 class AuthenticationTestCase(TestCase):
-    """Tests models and functions that manipulate them"""
+    """Tests all authentication routes"""
 
     def setUp(self):
         seed()

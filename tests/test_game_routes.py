@@ -21,7 +21,7 @@ app.config['WTF_CSRF_ENABLED'] = False
 app.config['TESTING'] = True
 
 class GameTestCase(TestCase):
-    """Tests models and functions that manipulate them"""
+    """Tests all game routes"""
 
     @classmethod
     def setUpClass(cls):
