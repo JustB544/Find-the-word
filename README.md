@@ -5,7 +5,7 @@ All code in this repository is under a MIT license which can be viewed in Licens
 
 Find the Word is a website that is used to test word knowledge through multiple different types of games.
 
-To visit the website click [here](https://find-the-word-uicx.onrender.com/)
+Due to the end of service from ElephantSQL, Find the Word is no longer live.
 
 The questions are sourced from [WordsAPI](https://rapidapi.com/dpventures/api/wordsapi/)
 
